@@ -21,3 +21,30 @@ const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];
 
 // An array of all the arrays above
 const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
+
+// Add your functions below:
+const validateCred = arr => {
+  let sumArr = [];
+  let sum = 0;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (i % 2 === 0) {
+      (arr[i] * 2) > 9 ? sumArr.push(arr[i] * 2 - 9) : sumArr.push(arr[i] * 2);
+    }
+    else {
+      sumArr.push(arr[i]);
+    }
+  }
+
+  for (let element of sumArr) {
+    sum += element;
+  }
+  
+  if (sum % 10 === 0) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+console.log(validateCred(valid1));

@@ -47,4 +47,46 @@ const validateCred = arr => {
   }
 }
 
-console.log(validateCred(valid1));
+const findInvalidCards = arr => {
+  return arr.filter(nestedArr => {
+    return validateCred(nestedArr) === false;
+  })
+};
+
+// console.log(findInvalidCards(batch));
+
+const idInvalidCardCompanies = arr => {
+  let companyInvalid = [];
+  for (let nestedArr of arr) {
+    if (nestedArr[0] === 3) {
+      if (!companyInvalid.includes('Amex (American Express)')) {
+        companyInvalid.push('Amex (American Express)');
+      }
+    }
+    else if (nestedArr[0] === 4) {
+      if (!companyInvalid.includes('Visa')) {
+        companyInvalid.push('Visa');
+    }
+  }
+    else if (nestedArr[0] === 5) {
+      if (!companyInvalid.includes('Mastercard')) {
+        companyInvalid.push('Mastercard');
+    }
+  }
+    else if (nestedArr[0] === 6) {
+      if (!companyInvalid.includes('Discover')) {
+        companyInvalid.push('Discover');
+    }
+  }
+    else {
+      console.log('Company not found');
+    }
+}
+  return companyInvalid;
+};
+
+let invalidCards = findInvalidCards(batch);
+
+
+console.log(idInvalidCardCompanies(invalidCards));
+
